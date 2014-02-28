@@ -22,6 +22,5 @@ unsigned long* get_divisors(divisible number);
 
 // Data Operations
 void divide(divisible number);
-void print_divisors(divisible number);
 
 #endif

@@ -5,5 +5,6 @@
 
 // Count how many numbers divide evenly into every number from 0 to max_num.
 divisible test_to(unsigned long max_num);
+void print_divisors(divisible number);
 
 #endif
