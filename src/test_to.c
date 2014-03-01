@@ -33,3 +33,11 @@ void print_divisors(divisible number)
 	}
 	printf("%lu.\n", get_value(number));
 }
+
+void print_divisible(divisible number)
+{
+	printf("Number:\n\t%lu\n", get_value(number));
+	printf("Number of Divisors:\n\t%u\n", get_num_divisors(number));
+	printf("Divisors:\n\t");
+	print_divisors(number);
+}
