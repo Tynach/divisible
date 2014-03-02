@@ -10,7 +10,7 @@ struct _divisible {
 	unsigned long value;
 	unsigned int num_divisors;
 
-	unsigned long divisors[1000];
+	unsigned long* divisors;
 };
 
 
@@ -18,14 +18,22 @@ struct _divisible {
  * 'divisible' method definitions *
  **********************************/
 
-// Constructor
+// Constructor and Destructor
 divisible new_divisible(unsigned long value)
 {
 	divisible number = malloc(sizeof(struct _divisible));
+	number->divisors = malloc(sizeof(unsigned long) * 1000);
+
 	number->value = value;
 	divide(number);
 
 	return number;
+}
+
+void free_divisible(divisible number)
+{
+	free(number->divisors);
+	free(number);
 }
 
 // Getters

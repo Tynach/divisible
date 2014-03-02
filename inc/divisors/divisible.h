@@ -12,8 +12,9 @@ typedef struct _divisible* divisible;
  * 'divisible' method definitions *
  **********************************/
 
-// Constructor
+// Constructor and Destructor
 divisible new_divisible(unsigned long value);
+void free_divisible(divisible number);
 
 // Getters
 unsigned long get_value(divisible number);

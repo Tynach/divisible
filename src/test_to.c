@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <test_to.h>
 #include <divisors/divisible.h>
 
@@ -11,10 +10,10 @@ divisible test_to(unsigned long max_num)
 	for (test_num = 0; test_num <= max_num; test_num++) {
 		current_number = new_divisible(test_num);
 		if (get_num_divisors(current_number) > get_num_divisors(number)) {
-			free(number);
+			free_divisible(number);
 			number = current_number;
 		} else {
-			free(current_number);
+			free_divisible(current_number);
 		}
 	}
 

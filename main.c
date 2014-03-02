@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 		printf("Tested Up To:\n\t%lu\n", max_nums[i]);
 		print_divisible(number);
 
-		free(number);
+		free_divisible(number);
 	} else {
 		for (i = 0; i < argc - 1; i++) {
 			max_nums[i] = strtoul(argv[i + 1], NULL, 0);
@@ -30,12 +30,12 @@ int main(int argc, char* argv[])
 			print_divisible(number);
 
 			if (i == argc - 2) {
-				free(number);
+				free_divisible(number);
 				break;
 			}
 			printf("\n");
 
-			free(number);
+			free_divisible(number);
 		}
 	}
 
