@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <divisors/divisible.h>
@@ -22,7 +23,16 @@ struct _divisible {
 divisible new_divisible(unsigned long value)
 {
 	divisible number = malloc(sizeof(struct _divisible));
+	if (number == NULL) {
+		printf("new_divisible() failed to allocate %u bytes for 'number'.\n", sizeof(number->divisors[0]) * number->num_divisors);
+		exit(EXIT_FAILURE);
+	}
+
 	number->divisors = malloc(sizeof(unsigned long) * 1000);
+	if (number->divisors == NULL) {
+		printf("new_divisible() failed to allocate %u bytes for 'number->divisors'.\n", sizeof(number->divisors[0]) * number->num_divisors);
+		exit(EXIT_FAILURE);
+	}
 
 	number->value = value;
 	divide(number);
@@ -51,6 +61,11 @@ unsigned long* get_divisors(divisible number)
 {
 	// Do *not* let anyone modify the *actual* list.
 	unsigned long* tmp = malloc(sizeof(number->divisors[0]) * number->num_divisors);
+	if (tmp == NULL) {
+		printf("get_divisors() failed to allocate %u bytes for 'tmp'.\n", sizeof(number->divisors[0]) * number->num_divisors);
+		exit(EXIT_FAILURE);
+	}
+
 	memcpy(tmp, number->divisors, sizeof(number->divisors[0]) * number->num_divisors);
 	return tmp;
 }
